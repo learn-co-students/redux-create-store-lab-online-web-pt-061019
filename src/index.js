@@ -20,3 +20,22 @@ function render() {
 
 // use your createStore function and the functions provided here to create a store
 // once the store is created, call an initial dispatch
+
+// * `getState` should return the current state.
+// * `dispatch` should take in an action, update the state using the reducer, and call the render function.
+
+function createStore(candyReducer) {
+
+  function getState() {
+    return candyReducer()
+  }
+
+  function dispatch(action) {
+    candyReducer(action)
+    render()
+  }
+
+  return {getState: getState, dispatch: "test"}
+}
+
+candyReducer({type: '@@INIT'})
